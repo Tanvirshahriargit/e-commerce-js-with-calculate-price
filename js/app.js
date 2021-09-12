@@ -14,7 +14,7 @@ const showProducts = (products) => {
     const div = document.createElement("div");
     div.classList.add("product");
     div.innerHTML = `<div class="single-product">
-      <div>
+    <div>
     <img class="product-image" src=${product.image}></img>
       </div>
       <h3>${product.title}</h3>
@@ -46,12 +46,12 @@ const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
-  document.getElementById(id).innerText = Math.round(total);
+  document.getElementById(id).innerText = parseFloat(total).toFixed(2);
 };
 
 // set innerText function
 const setInnerText = (id, value) => {
-  document.getElementById(id).innerText = Math.round(value);
+  document.getElementById(id).innerText = parseFloat(value).toFixed(2);
 };
 
 // update delivery charge and total Tax
@@ -73,9 +73,10 @@ const updateTaxAndCharge = () => {
 
 //grandTotal update function
 const updateTotal = () => {
-  const grandTotal =
-    getInputValue("price") + getInputValue("delivery-charge") +
-    getInputValue("total-tax");
+  const grandTotal = 
+  updatePrice()+ updateTaxAndCharge()
+    // getInputValue("price") + getInputValue("delivery-charge") +
+    // getInputValue("total-tax");
   document.getElementById("total").innerText = grandTotal;
 };
 loadProducts();
