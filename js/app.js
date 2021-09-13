@@ -5,7 +5,6 @@ const loadProducts = () => {
 };
 
 
-
 // show all product in UI 
 const showProducts = (products) => {
   const allProducts = products.map((pd) => pd);
@@ -13,7 +12,8 @@ const showProducts = (products) => {
     const image = product.images;
     const div = document.createElement("div");
     div.classList.add("product");
-    div.innerHTML = `<div class="single-product m-3 p-2">
+    div.innerHTML = `
+    <div class="single-product m-3 p-2">
     <div>
     <img class="product-image" src=${product.image}></img>
       </div>
@@ -28,17 +28,18 @@ const showProducts = (products) => {
     document.getElementById("all-products").appendChild(div);
   }
 };
+// add cart items and all function call
 let count = 0;
 const addToCart = (id, price) => {
   count = count + 1;
   updatePrice("price", parseFloat(price));
-
   updateTaxAndCharge();
   document.getElementById("total-Products").innerText = count;
   // update Total
   updateTotal();
 };
 
+// input value function
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
   const converted = parseFloat(element);
